@@ -1,43 +1,46 @@
 #ifndef PARSEUR_H
 #define PARSEUR_H
 
-// Prototype des structures pour un parser d'options
+#include <stdarg.h>
 
-// Structure pour les options disponibles
-typedef struct
+// PARSEUR_C
+
+struct option
 {
-    char shortcut;
-    const char *long_name;
-    int arg_count;
-} OptionDef;
+    char lettre;
+    char *complet;
+    unsigned int num_c;
+};
 
-typedef struct
+struct cpl_opt_arg
 {
-    const char *long_name;
-    char **arguments;
-    int arg_count;
-} ParsedOption;
+    char *option;
+    char **tab_arg;
+    int nbr_arg;
+};
 
-// Structure pour la configuration complète après parsing
-typedef struct
-{
-    ParsedOption *options;
-    int count;
-} ParsedOptions;
+int valide_opt(int argc, char *argv[]);
 
-// Prototype de la fonction de parsing
+void tiret_to_normal(char *opt);
 
-/**
- * Parse les arguments de ligne de commande.
- *
- * @param argc Le nombre d'arguments passés à la ligne de commande.
- * @param argv Le tableau des arguments passés à la ligne de commande.
- * @param options_def La liste des options disponibles (tableau d'OptionDef).
- * @param num_options Le nombre d'options disponibles dans options_def.
- * @param parsed_options Un pointeur vers une structure ParsedOptions qui sera
- * @return 0 si le parsing est réussi, ou un code d'erreur en cas de problème.
- */
-int parse_arguments(int argc, char *argv[], const OptionDef *options_def,
-                    int num_options, ParsedOptions *parsed_options);
+void char_to_string(char **opt, struct option *registre, int t_registre);
 
-#endif /*PARSEUR_H*/
+int in_registre(struct option *registre, int t_registre, int cpt_opt, char **tab_opt_s_t);
+
+int nbr_arg_registre(struct option *registre, int t_registre, int **tab_nbr_arg, int nbr_opt);
+
+int double_opt(int argc, char **liste_opt);
+
+int cpt_option(int argc, char *argv[]);
+
+char **liste_opt_s_tirets(int argc, char *argv[]);
+
+void afficher_opt(char **liste, int taille);
+
+void afficher_nbr_arg(char **liste_opt, int **liste_arg, int taille);
+
+int cpt_parameter_in_opt(int argc, char **argv, int num_opt);
+
+int parsing(int argc, char *argv[], struct option *registre, int nbr_registre_opt, ...);
+
+#endif // MODULE_ICMP_H
