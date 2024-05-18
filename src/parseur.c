@@ -230,6 +230,8 @@ int cpt_parameter_in_opt(int argc, char **argv, int num_opt)
     return cpt;
 }
 
+int verif_specificites();
+
 int parsing(int argc, char *argv[], struct option *registre, int t_registre, ...)
 {
     // Verification de la validité des arguments
