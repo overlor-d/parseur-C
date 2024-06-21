@@ -230,7 +230,7 @@ int cpt_parameter_in_opt(int argc, char **argv, int num_opt)
     return cpt;
 }
 
-int verif_specificites();
+int verif_specificites(struct option *registre);
 
 int parsing(int argc, char *argv[], struct option *registre, int t_registre, ...)
 {

@@ -22,12 +22,12 @@ compil: $(OBJ_FILES)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 check: compil
-	@if [ -f option ]; then \
+	@if [ -f $(TEST_DIR)/$(FILE_OPTION_PROGRAMM) ]; then \
 		echo "Exécution de programme.out avec les options du fichier 'option'"; \
-		OPTIONS=`cat option`; \
+		OPTIONS=`cat $(TEST_DIR)/$(FILE_OPTION_PROGRAMM)`; \
 		./programme.out $$OPTIONS; \
 	else \
-		echo "Fichier 'option' non trouvé."; \
+		echo "Fichier '$(TEST_DIR)/$(FILE_OPTION_PROGRAMM)' non trouvé."; \
 	fi
 
 dev:
