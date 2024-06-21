@@ -232,41 +232,7 @@ int cpt_parameter_in_opt(int argc, char **argv, int num_opt)
 
 int verif_specificites(struct option *registre);
 
-int parsing(int argc, char *argv[], struct option *registre, int t_registre, ...)
+int parsing(int argc, char *argv[], struct option *registre, ...)
 {
-    // Verification de la validité des arguments
-    if (valide_opt(argc, argv) == 1)
-    {
-        return 1;
-    }
-    int nbr_opt = cpt_option(argc, argv);
-    char **tab_opt_s_t = liste_opt_s_tirets(argc, argv);
-
-    // Verification de l'appartenance au registre
-    if (in_registre(registre, t_registre, nbr_opt, tab_opt_s_t) == 1)
-    {
-        free_double_tab(tab_opt_s_t, nbr_opt);
-        return 2;
-    }
-
-    // Transfo des char en string dans la liste des options
-    for (int k = 0; k < nbr_opt; k++)
-    {
-        char_to_string(&tab_opt_s_t[k], registre, t_registre);
-    }
-
-    // Vérification des doublons
-    if (double_opt(nbr_opt, tab_opt_s_t) == 1)
-    {
-        free_double_tab(tab_opt_s_t, nbr_opt);
-        return 3;
-    }
-    int **tab_arg_nbr = liste_arg_count(nbr_opt, argc, argv);
-
-    afficher_nbr_arg(tab_opt_s_t,tab_arg_nbr, nbr_opt);
-
     
-    free_double_tab(tab_arg_nbr, nbr_opt);
-    free_double_tab(tab_opt_s_t, nbr_opt);
-    return 0;
 }

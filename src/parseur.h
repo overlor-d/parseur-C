@@ -9,7 +9,7 @@ struct option
 {
     char lettre;
     char *complet;
-    unsigned int num_c;
+    int num_c;
 };
 
 struct cpl_opt_arg
@@ -43,6 +43,6 @@ int cpt_parameter_in_opt(int argc, char **argv, int num_opt);
 
 int verif_specificites(struct option *registre);
 
-int parsing(int argc, char *argv[], struct option *registre, int nbr_registre_opt, ...);
+int parsing(int argc, char *argv[], struct option *registre, ...);
 
 #endif // MODULE_ICMP_H

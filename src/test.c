@@ -9,7 +9,8 @@ int main(int argc, char *argv[])
         {'t', "test", 0}, //r1
         {'c', "client", 0}, //r2
         {'s', "server", 0}, //r3
-        {'d', "directory", 0} //r4
+        {'d', "directory", 0}, //r4
+        {0},
     };
 
     int t_registre = 4;
@@ -19,7 +20,5 @@ int main(int argc, char *argv[])
     struct cpl_opt_arg *r3;
     struct cpl_opt_arg *r4; */
 
-    
-
-    return parsing(argc, argv, registre_des_options, t_registre);
+    return parsing(argc, argv, registre_des_options);
 }

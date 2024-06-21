@@ -1,0 +1,13 @@
+src/test.c: In function ‘main’:
+src/test.c:23:12: error: too few arguments to function ‘parsing’
+   23 |     return parsing(argc, argv, registre_des_options);
+      |            ^~~~~~~
+In file included from src/test.c:4:
+src/parseur.h:46:5: note: declared here
+   46 | int parsing(int argc, char *argv[], struct option *registre, int nbr_registre_opt, ...);
+      |     ^~~~~~~
+src/test.c:16:9: error: unused variable ‘t_registre’ [-Werror=unused-variable]
+   16 |     int t_registre = 4;
+      |         ^~~~~~~~~~
+cc1: all warnings being treated as errors
+make[1]: *** [Makefile:22 : src/test.o] Erreur 1
